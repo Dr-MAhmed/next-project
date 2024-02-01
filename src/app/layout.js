@@ -17,6 +17,11 @@ export default function RootLayout({ children }) {
         <GlobalState>
           <Navbar/>
           <main className='flex min-h-screen flex-col mt-[80px]'>{children}</main>
+          <footer className="text-white p-4 bg-black">
+    <div className="container mx-auto text-center">
+        <p>&copy; 2024 Urban Emporium. All rights reserved.</p>
+    </div>
+</footer>
         </GlobalState>
       </body>
     </html>
