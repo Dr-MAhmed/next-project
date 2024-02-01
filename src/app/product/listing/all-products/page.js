@@ -1,9 +1,8 @@
-// import CommonListing from "@/components/CommonListing";
-// import { getAllAdminProducts } from "@/services/product";
+import CommonListing from "@/components/CommonListing";
+import { getAllAdminProducts } from "@/services/product";
 
 export default async function AllProducts() {
-  // const getAllProducts = await getAllAdminProducts();
+  const getAllProducts = await getAllAdminProducts();
 
-  // return <CommonListing data={getAllProducts && getAllProducts.data} />;
-  return <h1>all product</h1>
+  return <CommonListing data={getAllProducts && getAllProducts.data} />;
 }
