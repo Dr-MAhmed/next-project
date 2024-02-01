@@ -55,8 +55,6 @@ export default function Register() {
       setPageLevelLoader(false);
       setFormData(initialFormData);
     }
-
-    console.log(data);
   }
 
   useEffect(() => {

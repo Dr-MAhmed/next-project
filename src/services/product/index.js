@@ -23,7 +23,7 @@ export const addNewProduct = async (formData) => {
 
 export const getAllAdminProducts = async () => {
   try {
-    const res = await fetch("https://next-project-chi.vercel.app/api/admin/all-products", {
+    const res = await fetch("https://urbanemporium.vercel.app/api/admin/all-products", {
       method: "GET",
       cache: "no-store",
     });
@@ -38,7 +38,7 @@ export const getAllAdminProducts = async () => {
 
 export const updateAProduct = async (formData) => {
   try {
-    const res = await fetch("https://next-project-chi.vercel.app/api/admin/update-product", {
+    const res = await fetch("https://urbanemporium.vercel.app/api/admin/update-product", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -58,7 +58,7 @@ export const updateAProduct = async (formData) => {
 
 export const deleteAProduct = async (id) => {
   try {
-    const res = await fetch(`https://next-project-chi.vercel.app/api/admin/delete-product?id=${id}`, {
+    const res = await fetch(`https://urbanemporium.vercel.app/api/admin/delete-product?id=${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${Cookies.get("token")}`,
@@ -76,7 +76,7 @@ export const deleteAProduct = async (id) => {
 export const productByCategory = async (id) => {
   try {
     const res = await fetch(
-      `https://next-project-chi.vercel.app/api/admin/product-by-category?id=${id}`,
+      `https://urbanemporium.vercel.app/api/admin/product-by-category?id=${id}`,
       {
         method: "GET",
         cache: "no-store",
@@ -94,7 +94,7 @@ export const productByCategory = async (id) => {
 export const productById = async (id) => {
   try {
     const res = await fetch(
-      `https://next-project-chi.vercel.app/api/admin/product-by-id?id=${id}`,
+      `https://urbanemporium.vercel.app/api/admin/product-by-id?id=${id}`,
       {
         method: "GET",
         cache: "no-store",
