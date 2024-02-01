@@ -14,7 +14,7 @@ export default function Home() {
   async function getListOfProducts() {
     const res = await getAllAdminProducts();
 
-    if (res.success) {
+    if (res?.success) {
       setProducts(res.data);
     }
   }
@@ -22,8 +22,6 @@ export default function Home() {
   useEffect(() => {
     getListOfProducts();
   }, []);
-
-  console.log(products);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

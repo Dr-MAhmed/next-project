@@ -32,7 +32,7 @@ export const getAllAdminProducts = async () => {
 
     return data;
   } catch (error) {
-    console.log(error);
+    console.log(error); 
   }
 };
 

@@ -23,7 +23,7 @@ export default function AdminView() {
 
     
 
-    if (res.success) {
+    if (res?.success) {
       setPageLevelLoader(false);
       setAllOrdersForAllUsers(
         res.data && res.data.length
