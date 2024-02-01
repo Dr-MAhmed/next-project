@@ -39,7 +39,6 @@ export const adminNavOptions = [
   },
 ];
 
-
 export const registrationFormControls = [
   {
     id: "name",
@@ -67,7 +66,7 @@ export const registrationFormControls = [
     type: "",
     placeholder: "",
     label: "Role",
-    componentType: "",
+    componentType: "select",
     options: [
       {
         id: "admin",
@@ -79,8 +78,7 @@ export const registrationFormControls = [
       },
     ],
   },
-];  
-
+];
 
 export const loginFormControls = [
   {
@@ -98,8 +96,6 @@ export const loginFormControls = [
     componentType: "input",
   },
 ];
-
-
 
 export const adminAddProductformControls = [
   {
@@ -177,7 +173,6 @@ export const adminAddProductformControls = [
   },
 ];
 
-
 export const AvailableSizes = [
   {
     id: "s",
@@ -192,7 +187,6 @@ export const AvailableSizes = [
     label: "L",
   },
 ];
-
 export const firebaseConfig = {
   apiKey: "AIzaSyBo96Xr8hdkzMSM5bMRxYIiREOOAIEcees",
   authDomain: "next-js-ecommerce-2024-7535f.firebaseapp.com",
@@ -205,6 +199,7 @@ export const firebaseConfig = {
 
 
 export const firebaseStorageURL = 'gs://next-js-ecommerce-2024-7535f.appspot.com'
+
 export const addNewAddressFormControls = [
   {
     id: "fullName",

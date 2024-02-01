@@ -2,8 +2,8 @@ import connectToDB from "@/database";
 import User from "@/models/user";
 import { compare } from "bcryptjs";
 import Joi from "joi";
-import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
+import { NextResponse } from "next/server";
 
 const schema = Joi.object({
   email: Joi.string().email().required(),
@@ -18,12 +18,14 @@ export async function POST(req) {
   const { email, password } = await req.json();
 
   const { error } = schema.validate({ email, password });
+
   if (error) {
     return NextResponse.json({
       success: false,
       message: error.details[0].message,
     });
   }
+
   try {
     const checkUser = await User.findOne({ email });
     if (!checkUser) {
@@ -40,6 +42,7 @@ export async function POST(req) {
         message: "Incorrect password. Please try again !",
       });
     }
+
     const token = jwt.sign(
       {
         id: checkUser._id,
@@ -59,9 +62,10 @@ export async function POST(req) {
         role: checkUser.role,
       },
     };
+
     return NextResponse.json({
       success: true,
-      message: "Login Successfull!",
+      message: "Login successfull!",
       finalData,
     });
   } catch (e) {

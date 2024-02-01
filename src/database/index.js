@@ -13,7 +13,7 @@ const connectToDB = async () => {
     .connect(connectionUrl, configOptions)
     .then(() => console.log("Ecommerce database connected successfully!"))
     .catch((err) =>
-      console.log(`getting error from dbconnection ${err.message}`)
+      console.log(`Getting Error from DB connection ${err.message}`)
     );
 };
 

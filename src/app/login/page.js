@@ -6,19 +6,18 @@ import Notification from "@/components/Notification";
 import { GlobalContext } from "@/context";
 import { login } from "@/services/login";
 import { loginFormControls } from "@/utils";
-import { data } from "autoprefixer";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const initialFormData = {
+const initialFormdata = {
   email: "",
   password: "",
 };
 
 export default function Login() {
-  const [formData, setFormData] = useState(initialFormData);
+  const [formData, setFormData] = useState(initialFormdata);
   const {
     isAuthUser,
     setIsAuthUser,
@@ -29,6 +28,7 @@ export default function Login() {
   } = useContext(GlobalContext);
 
   const router = useRouter();
+
   console.log(formData);
 
   function isValidForm() {
@@ -42,24 +42,27 @@ export default function Login() {
   }
 
   async function handleLogin() {
-  setComponentLevelLoader({loading: true, id: ''})
+    setComponentLevelLoader({ loading: true, id: "" });
     const res = await login(formData);
+
     console.log(res);
 
     if (res.success) {
       toast.success(res.message);
       setIsAuthUser(true);
       setUser(res?.finalData?.user);
-      setFormData(initialFormData);
+      setFormData(initialFormdata);
       Cookies.set("token", res?.finalData?.token);
       localStorage.setItem("user", JSON.stringify(res?.finalData?.user));
-      setComponentLevelLoader({loading: false, id: ''})
+      setComponentLevelLoader({ loading: false, id: "" });
     } else {
       toast.error(res.message);
       setIsAuthUser(false);
-      setComponentLevelLoader({loading: false, id: ''})
+      setComponentLevelLoader({ loading: false, id: "" });
     }
   }
+
+  console.log(isAuthUser, user);
 
   useEffect(() => {
     if (isAuthUser) router.push("/");
@@ -92,12 +95,13 @@ export default function Login() {
                   ) : null
                 )}
                 <button
-                  className="disabled:opacity-50 inline-flex w-full items-center justify-center bg-black px-6 py-4 text-lg
-                 text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide"
+                  className="disabled:opacity-50 inline-flex w-full items-center justify-center bg-black px-6 py-4 text-lg 
+                     text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide
+                     "
                   disabled={!isValidForm()}
                   onClick={handleLogin}
                 >
-                   {componentLevelLoader && componentLevelLoader.loading ? (
+                  {componentLevelLoader && componentLevelLoader.loading ? (
                     <ComponentLevelLoader
                       text={"Logging In"}
                       color={"#ffffff"}
@@ -112,8 +116,9 @@ export default function Login() {
                 <div className="flex flex-col gap-2">
                   <p>New to website ?</p>
                   <button
-                    className="inline-flex w-full items-center justify-center bg-black px-6 py-4 text-lg
-                 text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide"
+                    className="inline-flex w-full items-center justify-center bg-black px-6 py-4 text-lg 
+                     text-white transition-all duration-200 ease-in-out focus:shadow font-medium uppercase tracking-wide
+                     "
                     onClick={() => router.push("/register")}
                   >
                     Register
@@ -124,7 +129,7 @@ export default function Login() {
           </div>
         </div>
       </div>
-      <Notification/>
+      <Notification />
     </div>
   );
 }

@@ -1,8 +1,9 @@
-import CommonListing from "@/components/CommonListing";
-import { productByCategory } from "@/services/product";
+// import CommonListing from "@/components/CommonListing";
+// import { productByCategory } from "@/services/product";
 
 export default async function MenAllProducts() {
-  const getAllProducts = await productByCategory("men");
+  // const getAllProducts = await productByCategory("men");
 
-  return <CommonListing data={getAllProducts && getAllProducts.data} />;
+  // return <CommonListing data={getAllProducts && getAllProducts.data} />;
+  return <h1>Mens all products</h1>
 }

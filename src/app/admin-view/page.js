@@ -21,7 +21,7 @@ export default function AdminView() {
     setPageLevelLoader(true);
     const res = await getAllOrdersForAllUsers();
 
-    console.log(res);
+    
 
     if (res.success) {
       setPageLevelLoader(false);
@@ -39,7 +39,7 @@ export default function AdminView() {
     if (user !== null) extractAllOrdersForAllUsers();
   }, [user]);
 
-  console.log(allOrdersForAllUsers);
+  
 
   async function handleUpdateOrderStatus(getItem) {
     setComponentLevelLoader({ loading: true, id: getItem._id });

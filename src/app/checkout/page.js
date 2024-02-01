@@ -6,8 +6,8 @@ import { fetchAllAddresses } from "@/services/address";
 import { createNewOrder } from "@/services/order";
 import { callStripeSession } from "@/services/stripe";
 import { loadStripe } from "@stripe/stripe-js";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Suspense, useContext, useEffect, useState } from "react";
 import { PulseLoader } from "react-spinners";
 import { toast } from "react-toastify";
 
@@ -26,7 +26,7 @@ export default function Checkout() {
   const [orderSuccess, setOrderSuccess] = useState(false);
 
   const router = useRouter();
-  const params = useSearchParams();
+  // const params = useSearchParams();
 
   const publishableKey =
     "pk_test_51OdWxtAEw6hmAagMKbb3JVHMvIk0TbxOmrnA3mNqkdcte6sTHYtrELM56QcI4bYorarHnd1OR1orIyGS56OwUpeo00GEvVgcFf";
@@ -52,7 +52,7 @@ export default function Checkout() {
 
       if (
         isStripe &&
-        params.get("status") === "success" &&
+        // params.get("status") === "success" &&
         cartItems &&
         cartItems.length > 0
       ) {
@@ -93,7 +93,7 @@ export default function Checkout() {
     }
 
     createFinalOrder();
-  }, [params.get("status"), cartItems]);
+  }, [cartItems]);
 
   function handleSelectedAddress(getAddress) {
     if (getAddress._id === selectedAddress) {
@@ -144,10 +144,10 @@ export default function Checkout() {
       sessionId: res.id,
     });
 
-    console.log(error);
+    
   }
 
-  console.log(checkoutFormData);
+  
 
   useEffect(() => {
     if (orderSuccess) {
@@ -191,7 +191,8 @@ export default function Checkout() {
   }
 
   return (
-    <div>
+    <Suspense fallback={null}>
+      <div>
       <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
         <div className="px-4 pt-8">
           <p className="font-medium text-xl">Cart Summary</p>
@@ -305,5 +306,6 @@ export default function Checkout() {
       </div>
       <Notification />
     </div>
+    </Suspense>
   );
 }
